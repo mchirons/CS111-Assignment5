@@ -1,0 +1,163 @@
+Assignment 5
+
+a. Selection sort
+
+Unsorted Array M U E J R Q X B
+
+After pass:		Array:				Comparisons in pass:
+1 				B U E J R Q X M 	7
+2				B E U J R Q X M 	6
+3				B E J U R Z X M		5
+4				B E J M R Q X U		4
+5				B E J M Q R X U		3
+6				B E J M Q R	X U		2
+7				B E J M Q R U X		1
+
+
+b. Insertion sort
+
+Unsorted Array M U E J R Q X B
+
+After pass: 	Array: 				Comparisons in pass:
+1				E M U J R Q X B		1
+2				E M U J R Q X B 	2
+3				E J M U R Q X B		2
+4				E J M R U Q X B		4
+5				E J M Q R U X B		4
+6				E J M Q R U X B 	6
+7				B E J M Q R U X 	1
+
+
+c. Determine if 2 arrays contain the same elements in the same order.
+
+1.	Algorithm
+
+	There exists two arrays: array1 and array2
+	We assume that array1 and array2 have the same length
+	int i = 0
+	If array1[i] is equal to array2[i]
+		increase i by 1
+	Loop this comparison until the condition is not met or i is equal to array lengths - 1
+	If i is equal to array lengths - 1, the two arrays contain the same elements in the same order, return true
+	If i is less than array lengths -1, the two arrays do not contain the same elements in the same order, return false
+	
+2. 	Run time factors
+
+	size of array1 and array2 = n
+	
+3. Operations that need counting
+
+	
+	Each iteration of comparing elements in array1 and array2
+	incrementation of variable i
+	
+	
+4. Expression of count
+
+	best case: 1 + 1 = 2 operations
+	worst case: n + n = 2n operations
+	
+	
+5. Inputs
+	
+	
+	best case: first elements of array1 and array2 are different, 1 comparison
+	worst case: all of the elements in array1 and array2 are equal, n comparisons
+
+6. Big-O Notation
+
+	2n is O(n)
+	
+	
+d. Counting total numbers of characters that have a duplicate within a string
+
+1. Algorithm
+
+	A string is  stored in a variable called input
+	An int variable called repeated is set to equal to 0
+	A char variable called letter is set to equal the value of the first character in input
+	If letter is a space character, letter becomes the next character of input
+	If letter is not a space character
+		If letter is equal to the following character of input
+			repeated is increased by 1
+			every instance of letter is replaced by a space character (requires every character of input to be compared to letter)
+		If letter is not equal to the following character of input
+			letter is set equal to the following character of input
+	Once the last character of input has been reached, repeated holds the number of character that occurred more than once in input 
+	
+2.	Run time factors
+
+	length of string input = n
+	number of repeating characters = n / 2 or less
+	
+3. 	Operations that need counting
+	
+	assigning letter to first character of input
+	comparison of letter to a space character
+	comparison of letter to the following characters in input for the purposes of 
+		deciding if letter repeats
+	in the case that letter is repeated, the comparison of letter to all the 
+		characters in input so that each instance can be replaced by a space character
+		also the incrementation of variable repeated
+	
+4.	Expression of count
+
+	assigning letter to first character of input = n times
+	comparing letter to a space character = n times
+	comparison of letter to following character of input to decide if letter repeats: from 1 times to n - 1 times
+	in the case that letter is repeated, the comparison of letter to remaining characters in input = n
+	
+	best case = (2n - 1) * n
+	worst case = 2(n - 1) * n * ((n / 2) + n)
+	
+5. 	Inputs
+
+	Best Case: no repeating characters  ex. "abc"
+	Worst Case: maximum repeating character ex. "abcdabcd"
+	
+6. Big-O Notation
+
+	(2n - 1) * n * n * ((n / 2) + n) is O(n^3)
+	
+
+e. Finding an empty row in a 2-D array where empty is defined as a row with all entries equal to 0
+
+1.	Algorithm
+
+	Given a 2 dimensional array called array2D
+	Set an integer value called count equal to 0
+	Compare each element of the first row of array2D to 0
+		If an element is equal to 0, increase count by 1
+		If an element is not equal to 0, move on to the next element
+	If count is equal to the number of elements compared in the previous step, that row was empty, return row number
+	If count is not equal to the number of elements compared in the previous step, set count to 0 and
+		elements in the next rows are compared to 0 until either an empty row is found or rows to compare run out
+		
+2. 	Run time factors
+	
+	number of elements in array2D = n
+	
+3. 	Operations that need counting
+
+	comparisons of elements in a row to 0
+	incrementing the int variable count
+	comparing count to the number of elements in array 2D
+	
+4.	Expression of count
+
+	comparing an element of array2D to 0 = elements in one row to n comparisons
+	incrementing count = 0 to n incrementations
+	comparing count to elements in array2D = 1
+	
+	best case: one row of comparison
+	worst case: 2n + 1 comparisons
+	
+	
+5. 	Inputs
+	
+	Best Case: first row is an empty row
+	Worst Case: none of the rows are empty
+	
+6. Big-O Notation
+
+	2n + 1 is O(n)
